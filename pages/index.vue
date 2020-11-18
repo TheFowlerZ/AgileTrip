@@ -1,26 +1,47 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
-      <h1 class="title">Notre projet AgileTrip</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+      <h1 class="title">AgileTrip</h1>
+      <p>Organisez votre futur voyage.</p>
+      <form>
+        <div class="row">
+          <div class="col">
+            <label
+              >Destination
+              <select class="custom-select">
+                <option selected>Destination</option>
+                <option value="1">Barcelone</option>
+                <option value="2">Madrid</option>
+                <option value="3">Miami</option>
+                <option value="4">Los Angeles</option>
+                <option value="5">Mexico</option>
+                <option value="6">Les Maldives</option>
+                <option value="7">Zürich</option>
+              </select>
+            </label>
+          </div>
+          <div class="col">
+            <label
+              >Date d'arrivée <input type="date" class="form-control"
+            /></label>
+          </div>
+          <div class="col">
+            <label
+              >Date de départ
+              <input type="date" class="form-control" />
+            </label>
+          </div>
+          <div class="col">
+            <nuxt-link
+              :to="{
+                name: 'liste-itineraire',
+              }"
+            >
+              Chercher un itinéraire
+            </nuxt-link>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -31,33 +52,10 @@ export default {}
 
 <style>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  margin-top: 250px;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+h1 + p {
+  margin-bottom: 20px;
 }
 </style>
