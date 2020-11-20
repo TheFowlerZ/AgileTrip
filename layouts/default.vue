@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Nuxt />
+    <NavigationBar></NavigationBar>
+    <div class="container">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
@@ -51,5 +54,9 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.container {
+  margin-top: 100px;
 }
 </style>

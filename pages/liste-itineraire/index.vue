@@ -1,43 +1,41 @@
 <template>
-  <div class="container">
-    <div>
-      <h1 class="title">AgileTrip</h1>
-      <h2>Résultats d'itinéraire :</h2>
-      <h2>Neuchâtel - Barcelone, du 21.12.2019 - 05.01.2020</h2>
-      <hr />
-      <div class="row">
-        <div class="col-2">
-          <div><b>Transport</b></div>
-          <div
-            v-for="transport in transports"
-            :id="transport.id"
-            :key="transport.id"
-          >
-            <label
-              >{{ transport.label }} <input value="value" type="checkbox"
-            /></label>
-          </div>
-        </div>
-        <div class="col-2">
-          <div><b>Escales</b></div>
-          <div v-for="escale in escales" :id="escale.id" :key="escale.id">
-            <label
-              >{{ escale.label }} <input value="value" type="checkbox"
-            /></label>
-          </div>
+  <div>
+    <h1 class="title">AgileTrip</h1>
+    <h2>Résultats d'itinéraire :</h2>
+    <h2>Neuchâtel - Barcelone, du 21.12.2019 - 05.01.2020</h2>
+    <hr />
+    <div class="row">
+      <div class="col-2">
+        <div><b>Transport</b></div>
+        <div
+          v-for="transport in transports"
+          :id="transport.id"
+          :key="transport.id"
+        >
+          <label
+            >{{ transport.label }} <input value="value" type="checkbox"
+          /></label>
         </div>
       </div>
-      <div v-for="it in itineraires" :key="it.id" class="row itineraire-row">
-        <div class="col">
-          <span>{{ it.title }}</span>
-          <nuxt-link
-            :to="{
-              name: 'itineraire-details',
-            }"
-          >
-            Voir les détails
-          </nuxt-link>
+      <div class="col-2">
+        <div><b>Escales</b></div>
+        <div v-for="escale in escales" :id="escale.id" :key="escale.id">
+          <label
+            >{{ escale.label }} <input value="value" type="checkbox"
+          /></label>
         </div>
+      </div>
+    </div>
+    <div v-for="it in itineraires" :key="it.id" class="row itineraire-row">
+      <div class="col">
+        <span>{{ it.title }}</span>
+        <nuxt-link
+          :to="{
+            name: 'itineraire-details',
+          }"
+        >
+          Voir les détails
+        </nuxt-link>
       </div>
     </div>
   </div>
