@@ -1,5 +1,7 @@
 <template>
-  <div class="destination-box mb-3 p-2">
+  <div class="mb-3 p-2 rounded border border-secondary">
+    <h4>{{ 'Destination ' + id }}</h4>
+
     <b-form inline>
       <b-form-group class="m-2" label="Destination">
         <b-form-input
@@ -40,9 +42,4 @@ export default {
 }
 </script>
 
-<style>
-.destination-box {
-  border: 1px solid gray;
-  border-radius: 5px;
-}
-</style>
+<style></style>
