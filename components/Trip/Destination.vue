@@ -23,6 +23,23 @@
       </b-form-group>
       <TransportSelect class="m-2"></TransportSelect>
     </b-form>
+
+    <div
+      v-if="hasActivity"
+      class="rounded border border-secondary p-2 mt-2 ml-2 mb-2"
+    >
+      <b-row v-for="activity in activities" :key="activity.id">
+        <b-col cols="11">
+          <Activity :id="activity.id"></Activity>
+        </b-col>
+        <b-col cols="1">
+          <b-button variant="danger" @click="removeActivity(activity.id)"
+            >x</b-button
+          >
+        </b-col>
+      </b-row>
+    </div>
+    <b-button class="m-2" @click="addActivity">+ Ajouter une activité</b-button>
   </div>
 </template>
 
@@ -35,10 +52,30 @@ export default {
     },
   },
   data: () => ({
+    activityCount: 1,
     destination: '',
     dateDebut: '',
     dateFin: '',
+    activities: [],
   }),
+
+  computed: {
+    hasActivity() {
+      return this.activities.length > 0
+    },
+  },
+
+  methods: {
+    addActivity() {
+      this.activities.push({
+        id: this.activityCount++,
+      })
+    },
+
+    removeActivity(id) {
+      this.activities = this.activities.filter((activity) => activity.id !== id)
+    },
+  },
 }
 </script>
 
