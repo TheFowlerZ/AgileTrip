@@ -19,6 +19,7 @@
           v-model="dateFin"
         ></b-form-datepicker>
       </b-form-group>
+      <TransportSelect class="m-2"></TransportSelect>
     </b-form>
   </div>
 </template>
