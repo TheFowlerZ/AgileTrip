@@ -9,12 +9,15 @@
       </b-form-group>
       <b-form-group class="m-2" label="Date de début">
         <b-form-datepicker
-          id="date-debut"
+          :id="'date-debut' + id"
           v-model="dateDebut"
         ></b-form-datepicker>
       </b-form-group>
       <b-form-group class="m-2" label="Date de fin" :col="12">
-        <b-form-datepicker id="date-fin" v-model="dateFin"></b-form-datepicker>
+        <b-form-datepicker
+          :id="'date-fin' + id"
+          v-model="dateFin"
+        ></b-form-datepicker>
       </b-form-group>
     </b-form>
   </div>
@@ -22,6 +25,12 @@
 
 <script>
 export default {
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
+  },
   data: () => ({
     destination: '',
     dateDebut: '',
