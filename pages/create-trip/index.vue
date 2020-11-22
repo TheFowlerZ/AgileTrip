@@ -1,39 +1,47 @@
 <template>
   <div>
-    <h3 class="mb-4">Créer un voyage personnalisé</h3>
-    <b-row v-for="destination in destinations" :key="destination.id">
-      <b-col cols="11">
-        <Destination :id="destination.id"></Destination>
-      </b-col>
-      <b-col cols="1">
-        <b-button variant="danger" @click="removeDestination(destination.id)"
-          >x</b-button
+    <div>
+      <form-wizard
+        backButtonText="Étape précédente"
+        nextButtonText="Étape suivante"
+        finishButtonText="Retourner à l'accueil"
+        shape="tab"
+        color="#e67e22"
+        @on-complete="onComplete"
+      >
+        <h2 slot="title">Créer un voyage</h2>
+
+        <tab-content title="Participants" icon="ti-user">
+          <ParticipantsTab></ParticipantsTab>
+        </tab-content>
+        <tab-content
+          title="Destinations, activités et hébérgements"
+          icon="ti-settings"
         >
-      </b-col>
-    </b-row>
-    <b-button @click="addDestination">+ Ajouter une destination</b-button>
+          <DestinationsTab></DestinationsTab>
+        </tab-content>
+        <tab-content title="Récapitulatif" icon="ti-check">
+          Écran récapitulatif.
+        </tab-content>
+        <tab-content title="Confirmation" icon="ti-check">
+          Écran de confirmation.
+        </tab-content>
+      </form-wizard>
+    </div>
   </div>
 </template>
 
 <script>
+import { FormWizard, TabContent } from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+import ParticipantsTab from '~/components/Tabs/ParticipantsTab.vue'
+import DestinationsTab from '~/components/Tabs/DestinationsTab.vue'
 export default {
-  data: () => ({
-    destCount: 1,
-    destinations: [],
-  }),
-
-  methods: {
-    addDestination() {
-      this.destinations.push({
-        id: this.destCount++,
-      })
-    },
-
-    removeDestination(id) {
-      this.destinations = this.destinations.filter(
-        (destination) => destination.id !== id
-      )
-    },
+  components: {
+    FormWizard,
+    TabContent,
+    ParticipantsTab,
+    DestinationsTab,
   },
 }
 </script>
